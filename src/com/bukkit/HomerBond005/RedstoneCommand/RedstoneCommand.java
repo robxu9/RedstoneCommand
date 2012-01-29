@@ -294,13 +294,37 @@ public class RedstoneCommand extends JavaPlugin{
     	mod.subtract(16,0,0);
     	mod.getChunk().load();
     	
-    	mod.add(0,8,0);
+    	mod = p.clone();
+    	
+    	mod.subtract(0,16,0);
     	mod.getChunk().load();
-    	mod.add(8,8,0);
+    	mod.subtract(16,0,0);
     	mod.getChunk().load();
-    	mod.subtract(0,8,0);
+    	mod.add(0,16,0);
     	mod.getChunk().load();
-    	mod.subtract(8,0,0);
+    	mod.add(16,16,0);
+    	mod.getChunk().load();
+    	
+    	mod = p.clone();
+    	
+    	mod.add(0,16,0);
+    	mod.getChunk().load();
+    	mod.subtract(16,16,0);
+    	mod.getChunk().load();
+    	mod.add(0,16,0);
+    	mod.getChunk().load();
+    	mod.subtract(16,0,0);
+    	mod.getChunk().load();
+    	
+    	mod = p.clone();
+    	
+    	mod.subtract(0,16,0);
+    	mod.getChunk().load();
+    	mod.add(16,16,0);
+    	mod.getChunk().load();
+    	mod.subtract(0,16,0);
+    	mod.getChunk().load();
+    	mod.add(16,0,0);
     	mod.getChunk().load();
     }
     // CONSOLE FUNCTIONS
