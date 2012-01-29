@@ -288,6 +288,7 @@ public class RedstoneCommand extends JavaPlugin{
         World world = getServer().getWorld(config.getProperty("RedstoneCommands.Locations." + name + ".WORLD").toString());
         final Location position = new Location(world, x - 1, y, z);
         if(position.getBlock().getType() == Material.REDSTONE_TORCH_ON){
+        	position.getChunk().load();
             position.getBlock().setType(Material.AIR);
             System.out.println("[RSC]: Successfully toggled RSC named " + name);
         }else{
@@ -301,6 +302,7 @@ public class RedstoneCommand extends JavaPlugin{
 		    			} catch (InterruptedException e) {
 		    				e.printStackTrace();
 		    			}
+		            	position.getChunk().load();
 		    			position.getBlock().setType(Material.AIR);
 		    			System.out.println("[RSC]: Successfully delayed RSC named " + name);
 		            }else{
@@ -326,6 +328,8 @@ public class RedstoneCommand extends JavaPlugin{
                 config.removeProperty((new StringBuilder("RedstoneCommands.Locations.")).append(name).toString());
                 Location torchposition = new Location(world, x - 1, y, z);
                 Location signposition = new Location(world, x, y, z);
+            	torchposition.getChunk().load();
+            	signposition.getChunk().load();
                 signposition.getBlock().setType(Material.AIR);
                 torchposition.getBlock().setType(Material.AIR);
                 config.save();
@@ -364,6 +368,7 @@ public class RedstoneCommand extends JavaPlugin{
         int z = ((Integer)config.getProperty((new StringBuilder("RedstoneCommands.Locations.")).append(name).append(".Z").toString())).intValue();
         World world = getServer().getWorld(config.getProperty("RedstoneCommands.Locations." + name + ".WORLD").toString());
         final Location position = new Location(world, x - 1, y, z);
+        position.getChunk().load();
         position.getBlock().setType(Material.REDSTONE_TORCH_ON);
     	System.out.println("[RSC]: Successfully turned on RSC named " + name);
     }
@@ -378,6 +383,7 @@ public class RedstoneCommand extends JavaPlugin{
         int z = ((Integer)config.getProperty((new StringBuilder("RedstoneCommands.Locations.")).append(name).append(".Z").toString())).intValue();
         World world = getServer().getWorld(config.getProperty("RedstoneCommands.Locations." + name + ".WORLD").toString());
         final Location position = new Location(world, x - 1, y, z);
+        position.getChunk().load();
         position.getBlock().setType(Material.AIR);
         System.out.println("[RSC]: Successfully turned off RSC named " + name);
     }
